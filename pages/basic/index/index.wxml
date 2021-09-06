@@ -1,0 +1,55 @@
+<!--index.wxml-->
+<cu-custom bgColor="bg-white" isHome="{{true}}" timeTable="{{week}}" semester="{{semester}}" hideAction="true"
+	bindswitchSemester="switchSemester">
+	<view slot="content">武工商课表</view>
+</cu-custom>
+<block wx:if="{{bindinfo.info&&uinfo}}">
+	<view class="weekbar">
+		<view wx:for="{{weekArrays}}" wx:for-item="dayItem" class="item {{dayItem[1]?'active':''}}"
+			style="width: {{wlistItemWidth}}px;">
+			<view class="index">{{dayItem[0]}}</view>
+			<view class="info">{{dayItem[2]}}</view>
+		</view>
+	</view>
+	<swiper indicator-dots="{{false}}" autoplay="{{false}}" current="{{week-1}}" style="height:{{13*55+wlistItemWidth+tabBarHeight}}px;"
+		bindchange="changeWeek">
+		<block wx:for="{{wlist}}" wx:for-item="week">
+			<swiper-item style="height:{{13*55+wlistItemWidth+tabBarHeight}}px;">
+				<view class="class">
+					<view
+						style="height:{{13*55+wlistItemWidth+tabBarHeight}}px;width:100%;display:flex;padding-top: 48px;">
+						<!--课表左侧栏-->
+						<view class="sidebar">
+							<view wx:for="{{timeArrays}}" wx:for-item="timeItem" class="item">
+								<view class="index">{{timeItem[0]}}</view>
+								<view class="time">{{timeItem[1]}}</view>
+							</view>
+						</view>
+						<view wx:for="{{[1,2,3,4,5,6,7,8,9,10,11,12,13]}}">
+							<view class="class-line" style="margin-top:{{index*55+54}}px;"></view>
+						</view>
+						<!--课表-->
+						<view wx:for="{{week}}" wx:for-item="class">
+							<view class="flex-item kcb-item" bindtap="showCardView" data-teachers="{{class.teachers}}" data-kcmc="{{class.kcmc}}" data-room="{{class.room}}"
+								style="width: {{wlistItemWidth-2}}px!important;margin-left:{{(class.xqj-1)*(wlistItemWidth)+1}}px;margin-top:{{(class.skjc-1)*55+1}}px;height:{{class.skcd*55-3}}px;background-color:{{colorArrays[index%16]}}">
+								<view class="smalltext">{{class.kcmc}}@{{class.room}}</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</swiper-item>
+		</block>
+	</swiper>
+</block>
+<block wx:if="{{!uinfo}}">
+	<view class="wtbuLogo"><image src="/assets/image/logo.png"></image></view>
+	<view class="wtbuTitle">武工商课表</view>
+	<view class="wtbuSubTitle">简洁 · 快捷 · 方便</view>
+	<view class="wtbuInfo">请去“我的”进行微信登录后可查看课表</view>
+</block>
+<block wx:elif="{{!bindinfo.info}}">
+	<view class="wtbuLogo"><image src="/assets/image/logo.png"></image></view>
+	<view class="wtbuTitle">武工商课表</view>
+	<view class="wtbuSubTitle">简洁 · 快捷 · 方便</view>
+	<view class="wtbuInfo">请去“我的”绑定教务账号后可查看课表</view>
+</block>

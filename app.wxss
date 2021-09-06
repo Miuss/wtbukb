@@ -1,0 +1,29 @@
+@import "colorui/main.wxss";
+@import "colorui/icon.wxss";
+@import "assets/flags/flags.wxss";
+@import "assets/icons/icons.wxss";
+
+page {
+	background-color: #ffffff;
+}
+
+.content-box {
+	padding: 18rpx;
+}
+
+.info-msg {
+	padding: 18rpx;
+	border-radius: 8px;
+	background-color: #ffffff;
+}
+
+.cu-modal {
+	/* background-color: transparent; */
+}
+
+.cu-modal .cu-dialog {
+	border-top-left-radius: 15px!important;
+	border-top-right-radius: 15px!important;
+	box-shadow: 0 1px 2px rgb(150 150 150 / 30%);
+	padding-bottom: env(safe-area-inset-bottom);
+}

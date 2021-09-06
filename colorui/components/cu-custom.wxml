@@ -1,0 +1,30 @@
+<view class="custom-bar" style="height:{{CustomBar}}px;">
+	<view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}"
+		style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
+		<view class="action border-custom" wx:if="{{isBack}}" bindtap="BackPage"
+			style="width:{{Custom.height}}px;height:{{Custom.height}}px;margin-left:calc(750rpx - {{Custom.right}}px);margin-right: 8px;">
+			<text class="cuIcon-back"></text>
+		</view>
+		<image wx:if="{{isHome||isSwitchBar}}" src="/assets/image/logo.png"
+			style="width: {{Custom.height}}px;height:{{Custom.height}}px;margin-left:calc(750rpx - {{Custom.right}}px);">
+		</image>
+		<view class="content {{isHome}}" wx:if="{{timeTable==0}}"
+			style="height:{{Custom.height}}px;margin-left:calc(750rpx - {{Custom.right}}px);">
+			<slot name="content"></slot>
+		</view>
+		<view class="content timetable" wx:if="{{timeTable>0}}"
+			style="height:{{CustomBar-StatusBar}}px;margin-left:calc(750rpx - {{Custom.right}}px);">
+			<picker bindchange="switchWeek" value="{{semester}}" range="{{SchoolYear.year}}">
+				<view class="week">{{weekPicker[timeTable-1]}}</view>
+				<view class="picker subtitle">{{SchoolYear.year[semester]}}</view>
+			</picker>
+		</view>
+		<view class="action-group" wx:if="{{isHome&&!hideAction}}"
+			style="right:calc(750rpx - {{Custom.right}}px + {{Custom.width}}px + 8px)">
+			<view class="action border-custom" style="width:{{Custom.height}}px;height:{{Custom.height}}px;">
+				<text class="cuIcon-mail" bindtap="toMsg"></text>
+			</view>
+		</view>
+		<slot name="right"></slot>
+	</view>
+</view>

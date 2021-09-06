@@ -1,0 +1,4 @@
+<!--pages/basic/home/home.wxml-->
+<cu-custom bgColor="bg-white" isHome="{{true}}">
+	<view slot="content">武工商课表</view>
+</cu-custom>

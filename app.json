@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/basic/home/home"
+  ],
+  "window": {
+    "backgroundColor": "#eeeeee",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom",
+    "backgroundColorTop": "#fff"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "plugins": {},
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

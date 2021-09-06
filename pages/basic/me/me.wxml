@@ -1,0 +1,112 @@
+<!--pages/basic/me/me.wxml-->
+<view class="bgimg-purple" wx:if="{{uinfo}}"></view>
+<view class="bgimg-purple all" wx:if="{{!uinfo}}"></view>
+<cu-custom bgImage="{{true}}" hideAction="{{true}}">
+	<view slot="content">我的</view>
+</cu-custom>
+<block wx:if="{{uinfo}}">
+	<view class="user-info" bindtap="showModal" data-target="bottomModal" wx:if="{{!bindinfo.info}}">
+		<view class="avatar">
+			<image class="icon" src="{{uinfo.avatarUrl?uinfo.avatarUrl:'/assets/image/avatar.png'}}"></image>
+		</view>
+		<view class="info">
+			<view class="title text-cut">{{uinfo.nickName}}</view>
+			<view class="addtime text-cut"> 尚未绑定教务系统账号 (点击绑定)</view>
+		</view>
+	</view>
+	<view class="user-info" bindtap="unbindStuBtnClick" wx:if="{{bindinfo.info}}">
+		<view class="avatar">
+			<image class="icon" src="{{uinfo.avatarUrl?uinfo.avatarUrl:''}}"></image>
+		</view>
+		<view class="info">
+			<view class="title text-cut">{{bindinfo.info.name}}<text
+					class="small margin-left-xs">{{bindinfo.info.major}}</text></view>
+			<view class="addtime text-cut"> 学号：{{bindinfo.stuId}} (点击解绑) </view>
+		</view>
+		<text class="time-bg">{{bindinfo.info.department}}</text>
+	</view>
+	<view class="user-stats-box bg-white radius-0">
+		<view class="flex">
+			<view class="flex-sub padding-xs">
+				<view class="value">{{bindinfo.info.class?bindinfo.info.class:'-'}}</view>
+				<view class="name">专业与班级</view>
+			</view>
+			<view class="flex-sub padding-xs">
+				<view class="value">{{bindinfo.info.byts?bindinfo.info.byts+'天':'-'}}</view>
+				<view class="name">离毕业还有</view>
+			</view>
+		</view>
+	</view>
+	<view class="user-set-box cu-list menu card-menu">
+		<view class="cu-item arrow">
+			<view class="content" bindtap="showQrcode">
+				<image src="/assets/image/hold.svg" class="png" mode="aspectFit"></image>
+				<text class="text-grey">赞赏支持</text>
+			</view>
+		</view>
+		<view class="cu-item arrow">
+			<button class="cu-btn content" open-type="share">
+				<image src="/assets/image/share.svg" class="png" mode="aspectFit"></image>
+				<text class="text-grey">分享小程序</text>
+			</button>
+		</view>
+		<view class="cu-item arrow">
+			<button class="cu-btn content" bindtap="showQQQrcode">
+				<image src="/assets/image/service.svg" class="png" mode="aspectFit"></image>
+				<text class="text-grey">加入企鹅交流群</text>
+			</button>
+		</view>
+		<view class="cu-item arrow">
+			<button class="cu-btn content" open-type="feedback">
+				<image src="/assets/image/feedback.svg" class="png" mode="aspectFit"></image>
+				<text class="text-grey">意见反馈</text>
+			</button>
+		</view>
+		<view class="cu-item arrow">
+			<view class="content" bindtap="userLogout">
+				<image src="/assets/image/logout.svg" class="png" mode="aspectFit"></image>
+				<text class="text-grey">退出登录</text>
+			</view>
+		</view>
+	</view>
+</block>
+<block wx:if="{{!uinfo}}">
+	<view class="user-info" bindtap="userLogin">
+		<view class="avatar">
+			<image class="icon" src="/assets/image/avatar.png"></image>
+		</view>
+		<view class="info">
+			<view class="title text-cut">请先登录</view>
+			<view class="addtime text-cut"> 登陆后才能发布服务器哦 </view>
+		</view>
+	</view>
+</block>
+<!-- 绑定教务 -->
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+	<view class="cu-dialog">
+		<view class="cu-bar">
+			<view class="action">
+				绑定武汉工商学院教务系统账号
+			</view>
+			<text class="action cuIcon-close" bindtap="hideModal"></text>
+		</view>
+		<view class="padding text-left">
+			<form bindsubmit='bindStuBtnClick'>
+				<view class="cu-form-group">
+					<view class="title">学号</view>
+					<input placeholder="学号" type="text" name="username"></input>
+				</view>
+				<view class="cu-form-group margin-top-lg">
+					<view class="title">密码</view>
+					<input placeholder="密码" type="password" name="password"></input>
+				</view>
+				<view class='ligin-button'>
+					<button class="bindStuBtn margin-top-lg" formType="submit">立即绑定</button>
+				</view>
+			</form>
+			<view class="margin-top-sm info-warning">
+				本小程序后端系统不会存储用户教务系统数据及密码。
+			</view>
+		</view>
+	</view>
+</view>
