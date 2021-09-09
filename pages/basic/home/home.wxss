@@ -1,1 +1,66 @@
 /* pages/basic/home/home.wxss */
+.title {
+	margin-top: 8rpx;
+	margin-bottom: 26rpx;
+	padding: 0 18rpx;
+	font-size: 16px;
+	font-weight: 600;
+	color: #000000;
+}
+
+.sub-title {
+	font-size: 11px;
+	font-weight: 400;
+	opacity: .6;
+}
+
+.bbs {
+	padding: .25em .5em;
+	background-color: #000000;
+	color: #ffffff;
+	border: 1px solid #eee;
+	border-radius: 8px;
+	
+}
+
+.class-item {
+	position: relative;
+	color: #ffffff;
+	margin-right: 18rpx;
+	margin-bottom: 18rpx;
+	padding: 22rpx;
+	height: calc((48px + 44rpx));
+	border-radius: 8px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.class-item .cover {
+	position: absolute;
+	height: 48px;
+}
+
+.class-item .icon {
+	border-radius: 8px;
+	width: 48px;
+	height: 48px;
+}
+
+.class-item .content {
+	height: 48px;
+}
+
+.class-item .name {
+	font-size: 14px;
+	font-weight: 600;
+	margin: 4px 0;
+}
+
+.class-item .room {
+	font-size: 12px;
+	opacity: .7;
+}
+
+.grid.col-2 .class-item:nth-child(2n) {
+	margin-right: 0;
+}

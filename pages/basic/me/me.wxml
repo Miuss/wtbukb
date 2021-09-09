@@ -1,7 +1,7 @@
 <!--pages/basic/me/me.wxml-->
 <view class="bgimg-purple" wx:if="{{uinfo}}"></view>
 <view class="bgimg-purple all" wx:if="{{!uinfo}}"></view>
-<cu-custom bgImage="{{true}}" hideAction="{{true}}">
+<cu-custom bgImage="true" hideAction="{{true}}">
 	<view slot="content">我的</view>
 </cu-custom>
 <block wx:if="{{uinfo}}">
@@ -77,7 +77,7 @@
 		</view>
 		<view class="info">
 			<view class="title text-cut">请先登录</view>
-			<view class="addtime text-cut"> 登陆后才能发布服务器哦 </view>
+			<view class="addtime text-cut">登录并绑定教务后才能查看课表哦~</view>
 		</view>
 	</view>
 </block>

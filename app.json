@@ -1,7 +1,6 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/basic/home/home"
+    "pages/index/index"
   ],
   "window": {
     "backgroundColor": "#eeeeee",

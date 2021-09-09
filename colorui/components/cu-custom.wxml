@@ -16,7 +16,10 @@
 			style="height:{{CustomBar-StatusBar}}px;margin-left:calc(750rpx - {{Custom.right}}px);">
 			<picker bindchange="switchWeek" value="{{semester}}" range="{{SchoolYear.year}}">
 				<view class="week">{{weekPicker[timeTable-1]}}</view>
-				<view class="picker subtitle">{{SchoolYear.year[semester]}}</view>
+				<view class="picker subtitle">
+					{{SchoolYear.year[semester]}}
+					<text class="cuIcon-unfold lg"></text>
+				</view>
 			</picker>
 		</view>
 		<view class="action-group" wx:if="{{isHome&&!hideAction}}"

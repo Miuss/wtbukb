@@ -2,3 +2,15 @@
 <cu-custom bgColor="bg-white" isHome="{{true}}">
 	<view slot="content">武工商课表</view>
 </cu-custom>
+<view class="content-box">
+	<view class="bbs">公告：正在抓紧开发与维护，请各位耐心等待...</view>
+	<block wx:if="{{bindinfo.info&&uinfo&&wlist}}">
+		<view class="title">今日课程 <text class="sub-title margin-left-sm">数据更新于五分钟前</text></view>
+		<view class="class-item" wx:for="{{wlist[week-1]}}" wx:key="index" wx:if="{{item.xqj==day}}" bindtap="serverClick" style="background-color:{{colorArrays[index%16]}}">
+			<view class="content">
+				<view class="name text-cut">{{item.kcmc}}</view>
+				<view class="room">教室：{{item.room}}</view>
+			</view>
+		</view>
+	</block>
+</view>

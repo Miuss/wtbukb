@@ -9,6 +9,10 @@ Page({
 			"selectedIconPath": "/assets/image/home_active.svg",
 			"text": "首页"
 		}, {
+			"iconPath": "/assets/image/home.svg",
+			"selectedIconPath": "/assets/image/home_active.svg",
+			"text": "课表"
+		}, {
 			"iconPath": "/assets/image/me.svg",
 			"selectedIconPath": "/assets/image/me_active.svg",
 			"text": "我的"
@@ -32,7 +36,7 @@ Page({
 				currentTab: swichId
 			})
 			let index = that.selectComponent("#index");
-			if (index.data.wlist.length == 0 && that.data.bindinfo && swichId == 0) {
+			if (index.data.wlist.length == 0 && that.data.bindinfo && swichId == 1) {
 				index.getTimeTable(index.data.schoolYear.id.length-1)
 			}
 		}

@@ -15,7 +15,7 @@ App({
 					this.globalData.CustomBar = e.statusBarHeight + 50;
 				}
 				this.globalData.windowWidth = e.windowWidth;
-				this.globalData.CustomScrollBox = e.windowHeight - this.globalData.CustomBar
+				this.globalData.CustomScrollBox = e.windowHeight - this.globalData.CustomBar;
 			}
 		})
 	},
