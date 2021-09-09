@@ -9,8 +9,8 @@ Page({
 			"selectedIconPath": "/assets/image/home_active.svg",
 			"text": "首页"
 		}, {
-			"iconPath": "/assets/image/home.svg",
-			"selectedIconPath": "/assets/image/home_active.svg",
+			"iconPath": "/assets/image/class.svg",
+			"selectedIconPath": "/assets/image/class_active.svg",
 			"text": "课表"
 		}, {
 			"iconPath": "/assets/image/me.svg",
