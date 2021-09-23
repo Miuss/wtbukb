@@ -1,0 +1,8 @@
+/* pages/about/about.wxss */
+.about {
+	border-radius: 8px !important;
+	border-top: 5px solid #5975ff;
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 2%), 0 16px 32px 0 rgb(0 0 0 / 7%);
+	-webkit-box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
+	box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
+}

@@ -54,11 +54,17 @@ Component({
 
 	/* 组件的方法列表 */
 	methods: {
+		toAbout() {
+			wx.vibrateShort();
+			wx.navigateTo({
+				url: '/pages/about/about',
+			})
+		},
 		showQrcode() {
 			wx.vibrateShort();
 			wx.previewImage({
-				urls: ['https://wxapp.mcstatus.miuss.pro/Pay.jpg'],
-				current: 'https://wxapp.mcstatus.miuss.pro/Pay.jpg'
+				urls: ['https://wtbu.miuss.icu/Pay.jpg'],
+				current: 'https://wtbu.miuss.icu/Pay.jpg'
 			})
 		},
 		showQQQrcode() {

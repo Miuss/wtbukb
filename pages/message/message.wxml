@@ -1,0 +1,16 @@
+<!--pages/message/message.wxml-->
+<cu-custom bgColor="bg-white" isBack="{{true}}">
+	<view slot="content">最新公告</view>
+</cu-custom>
+<list class="list" refresh-loading="{{refreshLoading}}" noData="{{noData}}" bindrefresh="initList"
+	bindloadmore="loadmore">
+	<view class="sysNotices-list menu-avatar server-list">
+		<block wx:for-item="parentItem" wx:for-index="parentIndex" wx:for="{{list}}" wx:key="parentIndex">
+			<view class="notice-item" wx:for="{{parentItem}}" wx:key="index" bindtap="serverClick" data-sid="{{item.id}}">
+				<view class="time">{{item.updatetime}}</view>
+				<view class="title">{{item.title}}</view>
+				<rich-text class="content" nodes="{{item.content}}"></rich-text>
+			</view>
+		</block>
+	</view>
+</list>

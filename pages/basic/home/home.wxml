@@ -3,14 +3,41 @@
 	<view slot="content">武工商课表</view>
 </cu-custom>
 <view class="content-box">
-	<view class="bbs">公告：正在抓紧开发与维护，请各位耐心等待...</view>
-	<block wx:if="{{bindinfo.info&&uinfo&&wlist}}">
-		<view class="title">今日课程 <text class="sub-title margin-left-sm">数据更新于五分钟前</text></view>
-		<view class="class-item" wx:for="{{wlist[week-1]}}" wx:key="index" wx:if="{{item.xqj==day}}" bindtap="serverClick" style="background-color:{{colorArrays[index%16]}}">
-			<view class="content">
-				<view class="name text-cut">{{item.kcmc}}</view>
-				<view class="room">教室：{{item.room}}</view>
+	<view class="loginAdCard margin-bottom" bindtap="swichNav" wx:if="{{!uinfo}}">
+		<view class="flex">
+			<image class="bg" style="background-image: url(http://tva1.sinaimg.cn/large/002ZE6Hrgy1guerewdsnkj62s02307wh02.jpg);"></image>
+			<image class="icon" src="/assets/image/wifi.svg"></image>
+			<view class="content">登陆后即可查看课表</view>
+		</view>
+	</view>
+	<view class="loginAdCard margin-bottom" bindtap="swichNav" wx:if="{{uinfo&&!bindinfo.info}}">
+		<view class="flex">
+			<image class="bg" style="background-image: url(http://tva1.sinaimg.cn/large/002ZE6Hrgy1guerewdsnkj62s02307wh02.jpg);"></image>
+			<image class="icon" src="/assets/image/wifi.svg"></image>
+			<view class="content">绑定教务后即可查看课表</view>
+		</view>
+	</view>
+	<!--<view class="DayCard margin-bottom" wx:if="{{uinfo&&bindinfo.info}}">
+		<view class="day">
+			<view class="text">周一</view>
+		</view>
+	</view>-->
+	<view class="title margin-top">今日课程 <text class="sub-title margin-left-sm">数据获取于本地课表缓存</text></view>
+	<view class="cu-timeline" wx:for="{{classArr}}" wx:key="index" bindtap="serverClick">
+		<view class="cu-time">{{timeArrays[item.class.skjc-1][1]}}</view>
+		<view class="cu-item class-item">
+			<view class="content" style="background-color:{{colorArrays[item.index%16]}}" bindtap="showCardView" data-teachers="{{item.class.teachers}}" data-kcmc="{{item.class.kcmc}}" data-room="{{item.class.room}}">
+				<view class="name">{{item.class.kcmc}}</view>
+				<view class="teachers">老师：{{item.class.teachers}}</view>
+				<view class="room"> 教室：{{item.class.room}}</view>
 			</view>
 		</view>
-	</block>
+	</view>
+	<view class="cu-timeline" wx:if="{{classArr.length==0}}">
+		<view class="cu-item class-item">
+			<view class="content" style="background-color: #5e77ff">
+				<view class="loading-card">今天没课，也不要忘记学习哦！</view>
+			</view>
+		</view>
+	</view>
 </view>

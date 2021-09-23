@@ -79,6 +79,12 @@ Component({
 				url: '/pages/index/index',
 			})
 		},
+		toMsg() {
+			wx.vibrateShort();
+			wx.navigateTo({
+				url: '/pages/message/message',
+			})
+		},
 		switchWeek(e) {
 			wx.vibrateShort();
 			this.setData({

@@ -39,6 +39,12 @@
 	</view>
 	<view class="user-set-box cu-list menu card-menu">
 		<view class="cu-item arrow">
+			<view class="content" bindtap="toAbout">
+				<image src="/assets/image/info.svg" class="png" mode="aspectFit"></image>
+				<text class="text-grey">关于我们</text>
+			</view>
+		</view>
+		<view class="cu-item arrow">
 			<view class="content" bindtap="showQrcode">
 				<image src="/assets/image/hold.svg" class="png" mode="aspectFit"></image>
 				<text class="text-grey">赞赏支持</text>

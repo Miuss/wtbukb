@@ -35,9 +35,27 @@ Page({
 			that.setData({
 				currentTab: swichId
 			})
-			let index = that.selectComponent("#index");
-			if (index.data.wlist.length == 0 && that.data.bindinfo && swichId == 1) {
-				index.getTimeTable(index.data.schoolYear.id.length-1)
+			if (swichId == 0) {
+				let home = that.selectComponent("#home");
+				home.updateClassList();
+			}
+			if (swichId == 1) {
+				if (!that.data.uinfo || !that.data.bindinfo.info) {
+					that.setData({
+						currentTab: 2
+					})
+					wx.showToast({
+						title: '登录并绑定教务后才能查看课表',
+						icon: 'none',
+						duration: 1000,
+						mask: true
+					})
+				} else {
+					let index = that.selectComponent("#index");
+					if (index.data.wlist.length == 0 && that.data.bindinfo) {
+						index.getTimeTable(index.data.schoolYear.id.length - 1)
+					}
+				}
 			}
 		}
 	},
@@ -48,6 +66,7 @@ Page({
 			success: (res) => {
 				wx.showLoading({
 					title: '登录中',
+					mask: true
 				})
 				let userInfo = res.userInfo;
 				that.setData({
@@ -58,20 +77,48 @@ Page({
 				wx.showToast({
 					title: '登录成功',
 					icon: 'none',
-					duration: 1000
+					duration: 1000,
+					mask: true
 				})
 			}
 		})
 	},
 	userLogout: function(e) {
-		wx.removeStorageSync('uinfo')
-		this.setData({
-			uinfo: ''
-		})
-		wx.showToast({
-			title: '成功登出',
-			icon: 'none',
-			duration: 1000
+		let that = this;
+		wx.showModal({
+			title: '账号登出提示',
+			content: '您确定要登出账号？',
+			success(res) {
+				if (res.confirm) {
+					wx.removeStorageSync('uinfo')
+					wx.removeStorageSync('stuId')
+					wx.removeStorageSync('pass')
+					wx.removeStorageSync('info')
+					wx.removeStorageSync('wlist')
+					that.setData({
+						uinfo: '',
+						stuId: '',
+						bindinfo: {
+							stuId: '',
+							pass: '',
+							info: '',
+						}
+					})
+					let index = that.selectComponent("#index");
+					index.setData({
+						wlist: '',
+						week: 0,
+						semester: 8,
+						weekArrays: []
+					})
+					wx.showToast({
+						title: '成功登出',
+						icon: 'none',
+						duration: 1000,
+						mask: true
+					})
+				}
+			}
 		})
 	},
 	unbindStuBtnClick: function(e) {
@@ -84,11 +131,16 @@ Page({
 					wx.showToast({
 						title: '解绑成功',
 						icon: 'none',
-						duration: 1000
+						duration: 1000,
+						mask: true
 					})
 					that.setData({
 						stuId: '',
-						bindinfo: ''
+						bindinfo: {
+							stuId: '',
+							pass: '',
+							info: '',
+						}
 					})
 					wx.removeStorageSync('stuId')
 					wx.removeStorageSync('pass')
@@ -98,7 +150,8 @@ Page({
 					index.setData({
 						wlist: '',
 						week: 0,
-						semester: 8
+						semester: 8,
+						weekArrays: []
 					})
 				}
 			}
@@ -120,13 +173,14 @@ Page({
 		} else {
 			wx.showLoading({
 				title: '绑定中',
+				mask: true
 			})
 			let data = {
 				username: e.detail.username,
 				password: e.detail.password
 			};
 			console.log(data);
-			api.POST("https://wtbukb.miuss.mcrealms.cn/api/?act=info", data, ).
+			api.POST("https://wtbu.miuss.icu/user/login", data, ).
 			then(result => {
 				wx.hideLoading()
 				console.log(result)
@@ -134,6 +188,9 @@ Page({
 					wx.showModal({
 						title: '提示',
 						content: result.msg
+					})
+					wx.reportEvent("getcourselist", {
+					  "status": "error"
 					})
 				} else {
 					//计算时间
@@ -162,7 +219,19 @@ Page({
 					this.setData({
 						modalName: null
 					})
+					wx.reportEvent("getcourselist", {
+					  "status": "success"
+					})
 				}
+			}).catch(function(res) {
+				console.log("error:" + res.errMsg);
+				wx.hideLoading()
+				wx.showToast({
+					title: '网络异常请重试',
+					icon: 'error',
+					duration: 1000,
+					mask: true
+				})
 			})
 		}
 	},

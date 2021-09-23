@@ -1,6 +1,6 @@
 <!-- 组件显示 -->
 <view hidden="{{currentTab == 0? false: true}}">
-	<component_home uinfo="{{uinfo}}" bindinfo="{{bindinfo}}"/>
+	<component_home id="home" uinfo="{{uinfo}}" bindinfo="{{bindinfo}}" bindswichNav="swichNav"/>
 </view>
 <view hidden="{{currentTab == 1? false: true}}">
 	<component_index id="index" uinfo="{{uinfo}}" bindinfo="{{bindinfo}}"/>

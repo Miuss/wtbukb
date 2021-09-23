@@ -15,24 +15,54 @@
 }
 
 .bbs {
-	padding: .25em .5em;
-	background-color: #000000;
-	color: #ffffff;
-	border: 1px solid #eee;
-	border-radius: 8px;
-	
+	padding: .5em 18rpx;
+	background-color: #fafafa;
+	color: #444444;
+	font-size: 13px;
+	font-weight: 800;
 }
 
-.class-item {
+.cu-timeline {
 	position: relative;
-	color: #ffffff;
-	margin-right: 18rpx;
-	margin-bottom: 18rpx;
-	padding: 22rpx;
-	height: calc((48px + 44rpx));
-	border-radius: 8px;
-	width: 100%;
-	overflow: hidden;
+}
+
+.cu-timeline>.cu-item.class-item {
+	padding: 30rpx 30rpx 30rpx 180rpx;
+}
+
+.cu-timeline>.cu-item.class-item::before {
+	left: 113rpx;
+}
+
+.cu-timeline>.cu-item.class-item::after {
+	left: 137rpx;
+	width: 3rpx;
+	border-radius: 3px;
+}
+
+.cu-timeline:last-child .class-item::after {
+	height: 30%;
+}
+
+.cu-timeline .cu-time {
+	position: absolute;
+	top: 24rpx;
+	font-weight: 600;
+	color: #333333;
+}
+
+.class-item .content {
+	padding: 15rpx 30rpx !important;
+	color: #ffffff !important;
+	border-radius: 8px !important;
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 2%), 0 16px 32px 0 rgb(0 0 0 / 7%);
+	-webkit-box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
+	box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
+}
+
+.class-item .content:active {
+	transform: scale(.98);
+	transition: .2s;
 }
 
 .class-item .cover {
@@ -47,7 +77,8 @@
 }
 
 .class-item .content {
-	height: 48px;
+	position: relative;
+	display: block;
 }
 
 .class-item .name {
@@ -56,11 +87,107 @@
 	margin: 4px 0;
 }
 
-.class-item .room {
+.class-item .room,
+.class-item .teachers {
 	font-size: 12px;
 	opacity: .7;
+	margin: 4px 0;
 }
 
 .grid.col-2 .class-item:nth-child(2n) {
 	margin-right: 0;
+}
+
+
+
+.loginAdCard {
+	position: relative;
+	display: block;
+	padding: 22rpx;
+	height: 60px;
+	border-radius: 8px;
+	transform: translateY(0);
+	overflow: hidden;
+}
+
+.loginAdCard:active {
+	transform: scale(.98);
+	transition: .2s;
+}
+
+.loginAdCard .bg {
+	background-position: center;
+	background-size: cover;
+	position: absolute;
+	width: 100%;
+	z-index: -1;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	-webkit-animation: move 36s infinite;
+	animation: move 36s infinite;
+}
+
+.loginAdCard .bg::after {
+	border-radius: 8px;
+	background-color: rgba(17, 17, 17, 0.5);
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	content: "";
+}
+
+.loginAdCard .icon {
+	width: calc((60px - 44rpx));
+	height: calc((60px - 44rpx));
+	margin-right: 22rpx;
+}
+
+.loginAdCard .content {
+	height: calc((60px - 44rpx));
+	line-height: calc((60px - 44rpx));
+	color: #ffffff;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.DayCard {
+	display: block;
+	position: relative;
+	width: 100%;
+	height: 9rem;
+	background: #f8f9fd;
+	border-radius: 8px;
+}
+
+.DayCard .day {
+	background-color: #eee;
+	position: absolute;
+	display: block;
+	top: 0;
+	padding: 1em .5em;
+}
+
+@-webkit-keyframes move {
+	0% {
+		transform: translateY(0)
+	}
+
+	to {
+		transform: translateY(-50%)
+	}
+}
+
+@keyframes move {
+	0% {
+		transform: translateY(0)
+	}
+
+	to {
+		transform: translateY(-50%)
+	}
 }
