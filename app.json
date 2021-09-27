@@ -1,20 +1,21 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/message/message",
-    "pages/about/about"
-  ],
-  "window": {
-    "backgroundColor": "#eeeeee",
-    "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTextStyle": "black",
-    "navigationStyle": "custom",
-    "backgroundColorTop": "#fff"
-  },
-  "usingComponents": {
-    "cu-custom": "/colorui/components/cu-custom"
-  },
-  "plugins": {},
-  "style": "v2",
-  "sitemapLocation": "sitemap.json"
+	"pages": [
+		"pages/index/index",
+		"pages/message/message",
+		"pages/about/about",
+		"pages/exam/exam"
+	],
+	"window": {
+		"backgroundColor": "#eeeeee",
+		"navigationBarBackgroundColor": "#ffffff",
+		"navigationBarTextStyle": "black",
+		"navigationStyle": "custom",
+		"backgroundColorTop": "#fff"
+	},
+	"usingComponents": {
+		"cu-custom": "/colorui/components/cu-custom"
+	},
+	"plugins": {},
+	"style": "v2",
+	"sitemapLocation": "sitemap.json"
 }

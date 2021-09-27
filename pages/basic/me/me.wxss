@@ -147,3 +147,58 @@
 	opacity: .8;
 	font-size: .5;
 }
+
+.login-box {
+	padding: 3em;
+}
+
+.login-box .logo image {
+	width: 64px;
+	height: 64px;
+	border-radius: 5em;
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 2%), 0 16px 32px 0 rgb(0 0 0 / 7%);
+	-webkit-box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
+	box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
+}
+
+.login-box .title {
+	margin-top: 20px;
+	margin-bottom: 8px;
+	font-size: 1.7em;
+}
+
+.login-box .sub-title {
+	margin-top: 6px;
+	font-size: 1.2em;
+	opacity: .8;
+}
+
+.login-action {
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.login-action .login-button {
+	margin: 0 auto;
+	width: 80%;
+	padding: .8em 1.5em;
+	color: #ffffff;
+	font-weight: 500;
+	font-size: 15px;
+	border-radius: 8rpx;
+	text-align: center;
+}
+
+.login-action .login-button:active {
+	transform: scale(.98);
+	transition: .2s;
+}
+
+.login-action .login-tips {
+	margin-top: 8px;
+	font-size: 13px;
+	opacity: .6;
+}

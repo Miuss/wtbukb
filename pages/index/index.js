@@ -13,6 +13,10 @@ Page({
 			"selectedIconPath": "/assets/image/class_active.svg",
 			"text": "课表"
 		}, {
+			"iconPath": "/assets/image/box.svg",
+			"selectedIconPath": "/assets/image/box_active.svg",
+			"text": "百宝箱"
+		}, {
 			"iconPath": "/assets/image/me.svg",
 			"selectedIconPath": "/assets/image/me_active.svg",
 			"text": "我的"
@@ -39,18 +43,17 @@ Page({
 				let home = that.selectComponent("#home");
 				home.updateClassList();
 			}
-			if (swichId == 1) {
+			if (swichId == 1 || swichId == 2) {
 				if (!that.data.uinfo || !that.data.bindinfo.info) {
 					that.setData({
-						currentTab: 2
+						currentTab: 3
 					})
 					wx.showToast({
 						title: '登录并绑定教务后才能查看课表',
 						icon: 'none',
-						duration: 1000,
-						mask: true
+						duration: 1000
 					})
-				} else {
+				} else if (swichId == 1) {
 					let index = that.selectComponent("#index");
 					if (index.data.wlist.length == 0 && that.data.bindinfo) {
 						index.getTimeTable(index.data.schoolYear.id.length - 1)
@@ -190,7 +193,7 @@ Page({
 						content: result.msg
 					})
 					wx.reportEvent("getcourselist", {
-					  "status": "error"
+						"status": "error"
 					})
 				} else {
 					//计算时间
@@ -220,7 +223,7 @@ Page({
 						modalName: null
 					})
 					wx.reportEvent("getcourselist", {
-					  "status": "success"
+						"status": "success"
 					})
 				}
 			}).catch(function(res) {
@@ -236,23 +239,44 @@ Page({
 		}
 	},
 	onLoad: function(option) {
-		var obj = this.createSelectorQuery();
+		let that = this;
+		var obj = that.createSelectorQuery();
 		obj.select('.nav-tabs').boundingClientRect(function(rect) {
 			console.log('获取tabBar元素的高度', rect.height);
+			that.setData({
+				tabBarHeight: rect.height
+			})
 			wx.setStorageSync('tabBarHeight', rect.height) // 将获取到的高度设置缓存，以便之后使用
 		}).exec();
 	},
 	onShow: function() {
-		this.setData({
+		let that = this;
+		let ResetStorage = wx.getStorageSync("ResetStorage");
+		that.setData({
 			uinfo: wx.getStorageSync("uinfo")
 		})
-		this.setData({
+		that.setData({
 			bindinfo: {
 				stuId: wx.getStorageSync("stuId"),
 				pass: wx.getStorageSync("pass"),
 				info: wx.getStorageSync("info")
 			}
 		})
+		if (ResetStorage != 10000) {
+			wx.showModal({
+				title: '更新提示',
+				content: '本次更新需要清理一次本地缓存\n清理后需要重新登录并绑定教务\n希望各位用户谅解！',
+				success: function(res) {
+					if (res.confirm) {
+						wx.clearStorageSync();
+						wx.setStorageSync('ResetStorage', 10000);
+						wx.reLaunch({
+							url: '/pages/index/index'
+						})
+					}
+				}
+			})
+		}
 	},
 
 	/**

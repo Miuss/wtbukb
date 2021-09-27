@@ -5,28 +5,28 @@
 <view class="content-box">
 	<view class="loginAdCard margin-bottom" bindtap="swichNav" wx:if="{{!uinfo}}">
 		<view class="flex">
-			<image class="bg" style="background-image: url(http://tva1.sinaimg.cn/large/002ZE6Hrgy1guerewdsnkj62s02307wh02.jpg);"></image>
+			<image class="bg"
+				style="background-image: url(http://tva1.sinaimg.cn/large/002ZE6Hrgy1guerewdsnkj62s02307wh02.jpg);">
+			</image>
 			<image class="icon" src="/assets/image/wifi.svg"></image>
 			<view class="content">登陆后即可查看课表</view>
 		</view>
 	</view>
 	<view class="loginAdCard margin-bottom" bindtap="swichNav" wx:if="{{uinfo&&!bindinfo.info}}">
 		<view class="flex">
-			<image class="bg" style="background-image: url(http://tva1.sinaimg.cn/large/002ZE6Hrgy1guerewdsnkj62s02307wh02.jpg);"></image>
+			<image class="bg"
+				style="background-image: url(http://tva1.sinaimg.cn/large/002ZE6Hrgy1guerewdsnkj62s02307wh02.jpg);">
+			</image>
 			<image class="icon" src="/assets/image/wifi.svg"></image>
 			<view class="content">绑定教务后即可查看课表</view>
 		</view>
 	</view>
-	<!--<view class="DayCard margin-bottom" wx:if="{{uinfo&&bindinfo.info}}">
-		<view class="day">
-			<view class="text">周一</view>
-		</view>
-	</view>-->
 	<view class="title margin-top">今日课程 <text class="sub-title margin-left-sm">数据获取于本地课表缓存</text></view>
 	<view class="cu-timeline" wx:for="{{classArr}}" wx:key="index" bindtap="serverClick">
 		<view class="cu-time">{{timeArrays[item.class.skjc-1][1]}}</view>
 		<view class="cu-item class-item">
-			<view class="content" style="background-color:{{colorArrays[item.index%16]}}" bindtap="showCardView" data-teachers="{{item.class.teachers}}" data-kcmc="{{item.class.kcmc}}" data-room="{{item.class.room}}">
+			<view class="content" style="background-color:{{colorArrays[item.index%16]}}" bindtap="showCardView"
+				data-teachers="{{item.class.teachers}}" data-kcmc="{{item.class.kcmc}}" data-room="{{item.class.room}}">
 				<view class="name">{{item.class.kcmc}}</view>
 				<view class="teachers">老师：{{item.class.teachers}}</view>
 				<view class="room"> 教室：{{item.class.room}}</view>

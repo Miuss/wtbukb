@@ -14,9 +14,7 @@
 		<view class='margin-top-sm'>1.本小程序不会存放任何用户的数据，所有数据都将缓存到本地进行存储。</view>
 		<view class='margin-top-sm'>2.小程序后端因不存储用户数据，每次获取课表可能会长达10几秒，请各位耐心等待。</view>
 		<view class='margin-top-sm'>3.教务系统登录密码错误告知，并不是我们小程序修改了您的密码，而是教务系统程序本身的问题。</view>
-		<view class='margin-top-sm'>小程序开发者：</view>
-		<view class='margin-top-sm'>Miuss 人工智能学院 19物联网实验三班</view>
-		<view class='margin-top-sm'>Martin_Du 人工智能学院 19物联网实验三班</view>
+		<view class='margin-top-sm'>小程序由19级人工智能学院学生自运营开发，与学校官方无关。</view>
 	</view>
 </view>
 <view class='text-center margin-bottom text-lg text-gray'>© 2021 GenesisMiuss.</view>

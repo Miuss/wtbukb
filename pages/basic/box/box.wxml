@@ -1,0 +1,32 @@
+<!--pages/basic/home/home.wxml-->
+<cu-custom bgImage="http://tva1.sinaimg.cn/large/002ZE6Hrgy1guerewdsnkj62s02307wh02.jpg" isHome="{{true}}"
+	hideAction="true">
+	<view slot="content">武工商课表</view>
+</cu-custom>
+<view class="banner">
+	<view class="bg-img bg-mask padding-tb-xl"
+		style="height:{{CustomBar+150}}px;background-image:url(http://tva1.sinaimg.cn/large/002ZE6Hrgy1guerewdsnkj62s02307wh02.jpg);">
+		<view class="margin-top-xl padding-xl text-white">
+			<view class="margin-top-xl padding-xs">
+				{{HitoData.hitokoto}}
+			</view>
+			<view class="padding-xs margin-top-xs text-right">
+				— {{HitoData.from}}
+			</view>
+		</view>
+	</view>
+	<view class="ainuo_focus_bot">
+		<view class="focus__a"></view>
+		<view class="focus__b"></view>
+	</view>
+</view>
+<view class="content-box bg-image">
+	<view class="title padding-tb"><text class="cuIcon-title text-orange "></text> 百宝箱</view>
+	<view class="cu-list grid col-4 no-border">
+		<view class="cu-item" bindtap="toExam">
+			<image src="/assets/image/exam.svg"></image>
+			<view class="cu-tag badge">New</view>
+			<text>考试查询</text>
+		</view>
+	</view>
+</view>

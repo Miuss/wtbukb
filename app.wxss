@@ -11,6 +11,10 @@ page {
 	padding: 18rpx;
 }
 
+.content-box.bg-image {
+	margin-top: 9.375rem;
+}
+
 .info-msg {
 	padding: 18rpx;
 	border-radius: 8px;

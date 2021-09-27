@@ -1,7 +1,8 @@
 {
-  "usingComponents": {
-    "component_home": "/pages/basic/home/home",
-    "component_index": "/pages/basic/index/index",
-	"component_me": "/pages/basic/me/me"
-  }
+	"usingComponents": {
+		"component_home": "/pages/basic/home/home",
+		"component_index": "/pages/basic/index/index",
+		"component_box": "/pages/basic/box/box",
+		"component_me": "/pages/basic/me/me"
+	}
 }

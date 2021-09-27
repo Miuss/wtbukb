@@ -1,0 +1,89 @@
+/* pages/eaxm/eaxm.wxss */
+.banner {
+	position: relative;
+	padding: 1.6em;
+	background-image: linear-gradient(135deg, #FEC163 10%, #DE4313 100%);
+}
+
+.banner .sub-title {
+	margin-top: .5em;
+}
+
+.banner .title,
+.banner .sub-title {
+	color: #ffffff;
+}
+
+.banner .title {
+	font-size: 1.5em;
+	font-weight: 600;
+}
+
+.banner image {
+	position: absolute;
+	right: 1.6em;
+	width: 54px;
+	top: 22px;
+	height: 54px;
+	border-radius: 5em;
+	box-shadow: 0 0px 13px 6px rgb(160 49 8 / 20%);
+}
+
+.examPicker {
+	border-radius: 4px;
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 2%), 0 16px 32px 0 rgb(0 0 0 / 7%);
+	-webkit-box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
+	box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
+}
+
+.list .item-box {
+	position: relative;
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 2%), 0 16px 32px 0 rgb(0 0 0 / 7%);
+	-webkit-box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
+	box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
+	overflow: hidden;
+	border-radius: 4px;
+}
+
+.list .item {
+	position: relative;
+	overflow: hidden;
+	color: #333333;
+	border-top: 6px solid #ddd;
+	border-image: linear-gradient(135deg, #FEC163 10%, #DE4313 100%) 50;
+	border-radius: 8px;
+}
+
+.list .item .type {
+	position: absolute;
+	bottom: -7px;
+	z-index: 1;
+	right: -1px;
+	font-weight: 900;
+	font-size: 2.3em;
+	opacity: .1;
+	color: #333333;
+}
+
+.list .item .body {
+	opacity: .8;
+}
+
+.list .item .footer {
+	border-top: 1px solid #eeeeee;
+}
+
+.list .item .name {
+	font-weight: 600;
+}
+
+.list .item .address,
+.list .item .number {
+	float: right;
+}
+
+.msg {
+	text-align: center;
+	opacity: .6;
+	font-size: 14px;
+}

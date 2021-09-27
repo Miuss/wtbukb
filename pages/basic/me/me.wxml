@@ -1,8 +1,8 @@
 <!--pages/basic/me/me.wxml-->
 <view class="bgimg-purple" wx:if="{{uinfo}}"></view>
-<view class="bgimg-purple all" wx:if="{{!uinfo}}"></view>
+<view class="bgimg-bg" wx:if="{{!uinfo}}"></view>
 <cu-custom bgImage="true" hideAction="{{true}}">
-	<view slot="content">我的</view>
+	<view slot="content">{{uinfo?"我的":"武工商课表"}}</view>
 </cu-custom>
 <block wx:if="{{uinfo}}">
 	<view class="user-info" bindtap="showModal" data-target="bottomModal" wx:if="{{!bindinfo.info}}">
@@ -77,18 +77,24 @@
 	</view>
 </block>
 <block wx:if="{{!uinfo}}">
-	<view class="user-info" bindtap="userLogin">
-		<view class="avatar">
-			<image class="icon" src="/assets/image/avatar.png"></image>
-		</view>
-		<view class="info">
-			<view class="title text-cut">请先登录</view>
-			<view class="addtime text-cut">登录并绑定教务后才能查看课表哦~</view>
-		</view>
+	<view class="login-box">
+		<view class="logo"><image src="/assets/image/logo.png"></image></view>
+		<view class="title">武工商课表</view>
+		<view class="sub-title">武汉工商学院学生课表查询小程序 😋</view>
+		<view class="sub-title">咳咳，说点啥?</view>
+		<view class="sub-title">我在划水，别打扰我 💦</view>
+		<view class="sub-title">Emmmm，我说点啥？</view>
+		<view class="sub-title">开发君：🙇🏻‍别嫁人，我努力！</view>
+		<view class="sub-title">由人工智能学院学生运营 🤖</view>
+		<view class="sub-title">开发君帮室友脱单 📱:17768567808</view>
+	</view>
+	<view class="login-action" style="bottom: {{tabBarHeight+20}}px;">
+		<view class="login-button bg-green shadow button-hover margin-top-xl" bindtap="userLogin">微信账号快速登录</view>
+		<view class="login-tips">提示：登录后绑定教务账号才能查阅课表噢~</view>
 	</view>
 </block>
 <!-- 绑定教务 -->
-<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}" wx:if="{{uinfo&&!bindinfo.info}}">
 	<view class="cu-dialog">
 		<view class="cu-bar">
 			<view class="action">

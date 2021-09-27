@@ -27,6 +27,10 @@ Component({
 			type: Object,
 			value: ''
 		},
+		tabBarHeight: {
+			type: Number,
+			value: 0
+		},
 		modalName: {
 			type: String,
 			value: null
@@ -41,7 +45,8 @@ Component({
 	/* 组件声明周期函数 */
 	lifetimes: {
 		created: function() {},
-		attached: function() {},
+		attached: function() {
+		},
 		ready: function() {
 			console.log(this.data.uinfo)
 			console.log(this.data.bindinfo)

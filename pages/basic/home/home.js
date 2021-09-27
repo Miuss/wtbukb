@@ -102,6 +102,9 @@ Component({
 						});
 					}
 				})
+				classArr.sort((a, b)=>{
+					return a.class.skjc - b.class.skjc
+				});
 				this.setData({
 					classArr: classArr,
 					week: nowweek

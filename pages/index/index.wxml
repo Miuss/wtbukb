@@ -6,7 +6,10 @@
 	<component_index id="index" uinfo="{{uinfo}}" bindinfo="{{bindinfo}}"/>
 </view>
 <view hidden="{{currentTab == 2? false: true}}">
-	<component_me uinfo="{{uinfo}}" bindinfo="{{bindinfo}}" modalName="{{modalName}}" binduserLogin="userLogin" binduserLogout="userLogout" bindbindStuBtnClick="bindStuBtnClick" bindunbindStuBtnClick="unbindStuBtnClick"/>
+	<component_box id="box" uinfo="{{uinfo}}" bindinfo="{{bindinfo}}"/>
+</view>
+<view hidden="{{currentTab == 3? false: true}}">
+	<component_me id="me" tabBarHeight="{{tabBarHeight}}" uinfo="{{uinfo}}" bindinfo="{{bindinfo}}" modalName="{{modalName}}" binduserLogin="userLogin" binduserLogout="userLogout" bindbindStuBtnClick="bindStuBtnClick" bindunbindStuBtnClick="unbindStuBtnClick"/>
 </view>
 
 <!-- 自定义 tabbar -->
