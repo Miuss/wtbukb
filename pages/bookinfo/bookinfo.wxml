@@ -1,0 +1,54 @@
+<cu-custom bgColor="bg-white" isBack="{{true}}">
+	<view slot="content">图书馆</view>
+</cu-custom>
+<list refresh-loading="{{refreshLoading}}" noData="{{noData}}" bindrefresh="initList" tabbarHeight="{{tabBarHeight}}"
+	showTip="{{false}}" wx:if="{{pass!=''}}">
+	<view class="padding-sm text-df text-bold text-center text-grey" wx:if="{{!detail}}">图书馆数据载入中...</view>
+	<view class="content-box" wx:if="{{detail}}">
+		<view class="info grid col-2 bg-white padding padding-tb-sm radius light shadow-warp margin-bottom">
+			<view class="padding-tb-xs text-left text-grey">姓名</view>
+			<view class="padding-tb-xs text-right">{{uinfo.name}}</view>
+			<view class="padding-tb-xs text-left text-grey">证件号</view>
+			<view class="padding-tb-xs text-right">{{detail.zj_id}}</view>
+			<view class="padding-tb-xs text-left text-grey">欠费</view>
+			<view class="padding-tb-xs text-right {{detail.owe>0?'text-red':''}}">{{detail.owe}}</view>
+			<view class="padding-tb-xs text-left text-grey">证件状态</view>
+			<view class="padding-tb-xs text-right {{detail.status=='正常'?'text-green':'text-red'}}">{{detail.status}}</view>
+			<view class="padding-tb-xs text-left text-grey">当前借阅数</view>
+			<view class="padding-tb-xs text-right">{{detail.present}}/{{detail.max}}</view>
+			<view class="padding-tb-xs text-left text-grey">总借阅数</view>
+			<view class="padding-tb-xs text-right"><text class="text-green">{{credit.yjy}}</text> 本(包含专业书{{credit.yjzys}}本)</view>
+			<view class="padding-tb-xs text-left text-grey">已考核数</view>
+			<view class="padding-tb-xs text-right"><text class="text-green">{{credit.ykh}}</text> 本(包含{{credit.ykhlb}}个类别)</view>
+		</view>
+		<view class="alert bg-grey text-df padding padding-tb-sm radius light shadow margin-bottom">
+			<view><text class="text-orange">借阅要求：</text>本科/专科/专升本的学生借阅量不少于80/60/40本,其中专业书不得少于20/15/10本</view>
+			<view><text class="text-orange">考核要求：</text>本科/专科/专升本的学生需通过10/6本书的网上考核,需涵盖5/4/3个类别</view>
+		</view>
+	</view>
+</list>
+<block wx:else>
+	<view class="banner">
+		<view class="title">图书馆</view>
+		<view class="sub-title">武工商学生图书馆信息检索</view>
+		<image src="/assets/image/ydxf.png"></image>
+	</view>
+	<view class="bindpass">
+		<form bindsubmit='bindStuBtnClick'>
+			<view class="cu-form-group">
+				<view class="title">学号</view>
+				<input placeholder="学号" type="text" name="username" disabled="disabled" value="{{uinfo.uid}}"></input>
+			</view>
+			<view class="cu-form-group">
+				<view class="title">密码</view>
+				<input placeholder="密码(身份证后六位)" type="password" name="password"></input>
+			</view>
+			<view class='ligin-button margin-lr'>
+				<button class="bindStuBtn" formType="submit">立即绑定</button>
+			</view>
+			<view class="margin info-warning">
+				17、18、19、20级读者密码身份证后六位；其他读者密码123；教职工密码123。
+			</view>
+		</form>
+	</view>
+</block>
