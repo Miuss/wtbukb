@@ -25,7 +25,8 @@
 		<view class="action-group" wx:if="{{isHome&&!hideAction}}"
 			style="right:calc(750rpx - {{Custom.right}}px + {{Custom.width}}px + 8px)">
 			<view class="action border-custom" style="width:{{Custom.height}}px;height:{{Custom.height}}px;">
-				<text class="cuIcon-mail" bindtap="toMsg"></text>
+				<view class="cuIcon-mail" bindtap="toMsg">
+				</view>
 			</view>
 		</view>
 		<slot name="right"></slot>

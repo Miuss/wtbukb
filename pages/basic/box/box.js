@@ -42,7 +42,8 @@ Component({
 		ready: function() {
 			let HitoTime = wx.getStorageSync("HitoTime");
 			console.log(HitoTime);
-			if (HitoTime==""||HitoTime>parseInt(new Date()/86400000)*86400) {
+			console.log(parseInt(new Date()/86400000)*86400)
+			if (HitoTime==""||HitoTime<parseInt(new Date()/86400000)*86400) {
 				this.getHitokoto();
 			}else {
 				this.setData({
@@ -57,14 +58,26 @@ Component({
 
 	/* 组件的方法列表 */
 	methods: {
+		toLibrary() {
+			wx.vibrateShort();
+			wx.navigateTo({
+				url: '/pages/bookinfo/bookinfo',
+			})
+		},
 		toExam() {
 			wx.vibrateShort();
 			wx.navigateTo({
 				url: '/pages/exam/exam',
 			})
 		},
+		toScore() {
+			wx.vibrateShort();
+			wx.navigateTo({
+				url: '/pages/score/score',
+			})
+		},
 		getHitokoto() {
-			api.GET("https://wtbu.miuss.icu/system/getHitokoto?c=j&time=0", ).
+			api.GET("https://wtbu.miuss.icu/system/getHitokoto?c=j&c=k&c=a&time=0", ).
 			then(result => {
 				if (result.status != "error") {
 					console.log(result);

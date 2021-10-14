@@ -82,3 +82,19 @@
 	margin-top: 20rpx;
 	overflow: unset;
 }
+
+.adContainer {
+    border-radius: 5px;
+    display: block;
+}
+
+.adContainer ad {
+	margin: 0 auto;
+	border-radius: 5px;
+	overflow: hidden;
+	transform: scale(1.2)!important;
+}
+
+.hitokoto {
+	font-size: 15px;
+}

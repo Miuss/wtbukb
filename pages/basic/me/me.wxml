@@ -14,7 +14,7 @@
 			<view class="addtime text-cut"> 尚未绑定教务系统账号 (点击绑定)</view>
 		</view>
 	</view>
-	<view class="user-info" bindtap="unbindStuBtnClick" wx:if="{{bindinfo.info}}">
+	<view class="user-info" bindtap="unbindStuBtnClick" wx:if="{{bindinfo.info&&bindinfo.info.type=='student'}}">
 		<view class="avatar">
 			<image class="icon" src="{{uinfo.avatarUrl?uinfo.avatarUrl:''}}"></image>
 		</view>
@@ -23,9 +23,20 @@
 					class="small margin-left-xs">{{bindinfo.info.major}}</text></view>
 			<view class="addtime text-cut"> 学号：{{bindinfo.stuId}} (点击解绑) </view>
 		</view>
-		<text class="time-bg">{{bindinfo.info.department}}</text>
+		<text class="time-bg">{{bindinfo.info.department?bindinfo.info.department:"武汉工商学院"}}</text>
 	</view>
-	<view class="user-stats-box bg-white radius-0">
+	<view class="user-info" bindtap="unbindStuBtnClick" wx:if="{{bindinfo.info&&bindinfo.info.type=='teacher'}}">
+		<view class="avatar">
+			<image class="icon" src="{{uinfo.avatarUrl?uinfo.avatarUrl:''}}"></image>
+		</view>
+		<view class="info">
+			<view class="title text-cut">{{bindinfo.info.name}}<text
+					class="small margin-left-xs">{{bindinfo.info.major}}</text></view>
+			<view class="addtime text-cut"> 工号：{{bindinfo.stuId}} (点击解绑) </view>
+		</view>
+		<text class="time-bg">{{bindinfo.info.department?bindinfo.info.department:"武汉工商学院"}}</text>
+	</view>
+	<view class="user-stats-box bg-white radius-0" wx:if="{{bindinfo.info.type=='student'}}">
 		<view class="flex">
 			<view class="flex-sub padding-xs">
 				<view class="value">{{bindinfo.info.class?bindinfo.info.class:'-'}}</view>
@@ -37,7 +48,7 @@
 			</view>
 		</view>
 	</view>
-	<view class="user-set-box cu-list menu card-menu">
+	<view class="user-set-box cu-list menu card-menu {{bindinfo.info.type=='teacher'||!bindinfo.info?'teacher':''}}">
 		<view class="cu-item arrow">
 			<view class="content" bindtap="toAbout">
 				<image src="/assets/image/info.svg" class="png" mode="aspectFit"></image>
@@ -80,13 +91,12 @@
 	<view class="login-box">
 		<view class="logo"><image src="/assets/image/logo.png"></image></view>
 		<view class="title">武工商课表</view>
-		<view class="sub-title">武汉工商学院学生课表查询小程序 😋</view>
+		<view class="sub-title">武汉工商学院课表小程序 😋</view>
 		<view class="sub-title">咳咳，说点啥?</view>
 		<view class="sub-title">我在划水，别打扰我 💦</view>
 		<view class="sub-title">Emmmm，我说点啥？</view>
 		<view class="sub-title">开发君：🙇🏻‍别嫁人，我努力！</view>
 		<view class="sub-title">由人工智能学院学生运营 🤖</view>
-		<view class="sub-title">开发君帮室友脱单 📱:17768567808</view>
 	</view>
 	<view class="login-action" style="bottom: {{tabBarHeight+20}}px;">
 		<view class="login-button bg-green shadow button-hover margin-top-xl" bindtap="userLogin">微信账号快速登录</view>

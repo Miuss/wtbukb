@@ -4,6 +4,11 @@
 	<view slot="content">武工商课表</view>
 </cu-custom>
 <block wx:if="{{bindinfo.info&&uinfo}}">
+	<view class="guidebg" wx:if="{{!knowguide}}"></view>
+	<view class="guide" wx:if="{{!knowguide}}">
+		<view class="margin-bottom-sm">提示：如需更新课表点击上方即可更新噢</view>
+		<view class="btn" bindtap="knowGuide">知道了</view>
+	</view>
 	<view class="weekbar">
 		<view wx:for="{{weekArrays}}" wx:for-item="dayItem" class="item {{dayItem[1]?'active':''}}"
 			style="width: {{wlistItemWidth}}px;">

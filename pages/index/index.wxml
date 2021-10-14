@@ -1,14 +1,14 @@
 <!-- 组件显示 -->
-<view hidden="{{currentTab == 0? false: true}}">
+<view class="box" style="{{currentTab == 0?'':'display: none;'}}">
 	<component_home id="home" uinfo="{{uinfo}}" bindinfo="{{bindinfo}}" bindswichNav="swichNav"/>
 </view>
-<view hidden="{{currentTab == 1? false: true}}">
+<view class="box" style="{{currentTab == 1?'':'display: none;'}}">
 	<component_index id="index" uinfo="{{uinfo}}" bindinfo="{{bindinfo}}"/>
 </view>
-<view hidden="{{currentTab == 2? false: true}}">
+<view class="box" style="{{currentTab == 2?'':'display: none;'}}">
 	<component_box id="box" uinfo="{{uinfo}}" bindinfo="{{bindinfo}}"/>
 </view>
-<view hidden="{{currentTab == 3? false: true}}">
+<view class="box" style="{{currentTab == 3?'':'display: none;'}}">
 	<component_me id="me" tabBarHeight="{{tabBarHeight}}" uinfo="{{uinfo}}" bindinfo="{{bindinfo}}" modalName="{{modalName}}" binduserLogin="userLogin" binduserLogout="userLogout" bindbindStuBtnClick="bindStuBtnClick" bindunbindStuBtnClick="unbindStuBtnClick"/>
 </view>
 

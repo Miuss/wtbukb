@@ -1,38 +1,36 @@
 <cu-custom bgColor="bg-white" isBack="{{true}}">
 	<view slot="content">考试查询</view>
 </cu-custom>
-<view class="banner">
+<!--<view class="banner">
 	<view class="title">考试查询</view>
 	<view class="sub-title">武工商学生考试信息查询</view>
 	<image src="/assets/image/exam.svg"></image>
+</view>-->
+<view class="cu-form-group examPicker">
+	<view class="title">学期</view>
+	<picker bindchange="getExamList" value="{{semester}}" range="{{SchoolYear.year}}">
+		<view class="picker">
+			{{SchoolYear.year[semester]}}
+		</view>
+	</picker>
 </view>
 <view class="content-box">
-	<view class="cu-form-group margin-top-xs examPicker margin-bottom">
-		<view class="title">学期</view>
-		<picker bindchange="getExamList" value="{{semester}}" range="{{SchoolYear.year}}">
-			<view class="picker">
-				{{SchoolYear.year[semester]}}
+	<view class="list" wx:if="{{list.length != 0}}">
+		<view class="item" wx:for="{{list}}">
+			<view class="header padding-lr padding-top">
+				<view class="address">{{item.address=="地点未安排"?"考场尚未安排":item.address}}</view>
+				<view class="name text-cut">{{item.name}}</view>
 			</view>
-		</picker>
-	</view>
-	<view class="list">
-		<view class="item-box margin-bottom margin-bottom" wx:for="{{list}}">
-			<view class="item">
-				<view class="header padding-lr padding-top">
-					<view class="address">{{item.address=="地点未安排"?"考场尚未安排":item.address}}</view>
-					<view class="name text-cut">{{item.name}}</view>
-				</view>
-				<view class="body padding-lr padding-bottom padding-top-sm">
-					<view class="number">{{item.number=="地点未安排"?"座位尚未安排":"座位号："+item.number}}</view>
-					<view class="date">{{item.number=="时间未安排"?"考试时间尚未安排":item.date+" "+item.time}}</view>
-				</view>
-				<view class="footer padding">
-					<view class="cid">{{item.cid}}</view>
-				</view>
-				<view class="type">{{item.type}}</view>
+			<view class="body padding-lr padding-bottom padding-top-sm">
+				<view class="number">{{item.number=="地点未安排"?"座位尚未安排":"座位号："+item.number}}</view>
+				<view class="date">{{item.time=="时间未安排"?"考试时间尚未安排":item.date+" "+item.time}}</view>
 			</view>
+			<view class="footer padding">
+				<view class="cid">{{item.cid}}</view>
+			</view>
+			<view class="type">{{item.type}}</view>
 		</view>
-		<view class="msg margin-top-lg" wx:if="{{list.length == 0 && got}}">该学期暂无任何考试</view>
-		<view class="msg margin-top-lg" wx:if="{{!got}}">请在上方选择学期进行查询</view>
 	</view>
+	<view class="msg margin-top-lg" wx:if="{{list.length == 0 && got}}">该学期暂无任何考试</view>
+	<view class="msg margin-top-lg" wx:if="{{!got}}">请在上方选择学期进行查询</view>
 </view>

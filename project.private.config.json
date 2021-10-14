@@ -23,6 +23,18 @@
           "pathName": "pages/index/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/score/score",
+          "pathName": "pages/score/score",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/bookinfo/bookinfo",
+          "pathName": "pages/bookinfo/bookinfo",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -1,6 +1,7 @@
 let app = getApp()
 const api = require('../../libs/api.js');
 const ut = require('../../util.js');
+let interstitialAd = null;
 Page({
 	data: {
 		currentTab: 0,
@@ -98,6 +99,7 @@ Page({
 					wx.removeStorageSync('pass')
 					wx.removeStorageSync('info')
 					wx.removeStorageSync('wlist')
+					wx.removeStorageSync('sfz')
 					that.setData({
 						uinfo: '',
 						stuId: '',
@@ -145,6 +147,7 @@ Page({
 							info: '',
 						}
 					})
+					wx.removeStorageSync('sfz')
 					wx.removeStorageSync('stuId')
 					wx.removeStorageSync('pass')
 					wx.removeStorageSync('info')
@@ -248,6 +251,9 @@ Page({
 			})
 			wx.setStorageSync('tabBarHeight', rect.height) // 将获取到的高度设置缓存，以便之后使用
 		}).exec();
+		setTimeout(()=>{
+			that.interstitialAd();
+		},15000);
 	},
 	onShow: function() {
 		let that = this;
@@ -262,14 +268,14 @@ Page({
 				info: wx.getStorageSync("info")
 			}
 		})
-		if (ResetStorage != 10000) {
+		if (ResetStorage != 10001) {
 			wx.showModal({
 				title: '更新提示',
 				content: '本次更新需要清理一次本地缓存\n清理后需要重新登录并绑定教务\n希望各位用户谅解！',
 				success: function(res) {
 					if (res.confirm) {
 						wx.clearStorageSync();
-						wx.setStorageSync('ResetStorage', 10000);
+						wx.setStorageSync('ResetStorage', 10001);
 						wx.reLaunch({
 							url: '/pages/index/index'
 						})
@@ -295,5 +301,17 @@ Page({
 			title: '武工商课表 - 学生查课助手',
 			query: ''
 		}
-	}
+	},
+	interstitialAd: function() {
+		if (wx.createInterstitialAd) {
+			interstitialAd = wx.createInterstitialAd({
+				adUnitId: 'adunit-96e3a1df48ce1cef'
+			})
+		}
+		if (interstitialAd) {
+			interstitialAd.show().catch((err) => {
+				console.error(err)
+			})
+		}
+	},
 })

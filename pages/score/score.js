@@ -2,7 +2,6 @@
 const app = getApp()
 const api = require('../../libs/api.js');
 const ut = require('../../util.js');
-
 Page({
 
 	/**
@@ -30,6 +29,7 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function(options) {
+
 	},
 
 	/**
@@ -41,6 +41,7 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function() {
+
 	},
 
 	/**
@@ -77,6 +78,35 @@ Page({
 	onShareAppMessage: function() {
 
 	},
+	showCardView(e) {
+		wx.vibrateShort();
+		var info = e.currentTarget.dataset;
+		wx.showModal({
+			title: info.name,
+			content: `${info.type}\n学分：${info.credit}\n分数：${info.score}\n绩点：${info.point}`,
+			confirmText: "知道了",
+			showCancel: false
+		})
+	},
+	avgScore() {
+		if (this.data.list && this.data.list.length > 0) {
+			return (this.data.list.reduce((result, next) => {
+				if (next.point * 1 === 0) {
+					return result
+				}
+				return result + next.point * 10 + 50
+			}, 0) / this.data.list.length).toFixed(2)
+		}
+		return 0
+	},
+	avgPoint() {
+		if (this.data.list && this.data.list.length > 0) {
+			return (this.data.list.reduce((result, next) => 1 * result + 1 * next.point, 0) / this.data.list
+					.length)
+				.toFixed(2)
+		}
+		return 0
+	},
 	getExamList(e) {
 		let that = this;
 		let data = {
@@ -88,7 +118,7 @@ Page({
 				title: '考试查询中',
 				mask: true
 			})
-			api.POST("https://wtbu.miuss.icu/eams/getExamList?semesterid=" + that.data
+			api.POST("https://wtbu.miuss.icu/eams/getExamScore?semesterid=" + that.data
 				.SchoolYear.id[e.detail.value], data, ).
 			then(result => {
 				if (result.status != "error") {
@@ -96,6 +126,10 @@ Page({
 						got: true,
 						semester: e.detail.value,
 						list: result.data
+					})
+					that.setData({
+						avgScore: that.avgScore(),
+						avgPoint: that.avgPoint()
 					})
 					wx.hideLoading();
 					wx.showToast({

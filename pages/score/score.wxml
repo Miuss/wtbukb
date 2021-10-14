@@ -1,0 +1,36 @@
+<cu-custom bgColor="bg-white" isBack="{{true}}">
+	<view slot="content">成绩查询</view>
+</cu-custom>
+<!--<view class="banner">
+	<view class="title">成绩查询</view>
+	<view class="sub-title">武工商学生考试成绩查询</view>
+	<image src="/assets/image/exam.svg"></image>
+</view>-->
+<view class="cu-form-group examPicker">
+	<view class="title">学期</view>
+	<picker bindchange="getExamList" value="{{semester}}" range="{{SchoolYear.year}}">
+		<view class="picker">
+			{{SchoolYear.year[semester]}}
+		</view>
+	</picker>
+</view>
+<view class="content-box">
+	<block wx:if="{{list.length != 0}}">
+		<view class="score">学期平均分数：{{avgScore}}</view>
+		<view class="score">学期平均绩点：{{avgPoint}}</view>
+		<view class="list margin-top-sm">
+			<view class="title flex">
+				<view class="flex-treble padding text-bold">课程名</view>
+				<view class="flex-sub padding text-bold">学分</view>
+				<view class="flex-sub padding text-bold">分数</view>
+			</view>
+			<view class="item flex" wx:for="{{list}}" bindtap="showCardView" data-name="{{item.name}}" data-type="{{item.type}}" data-credit="{{item.credit}}" data-score="{{item.score}}" data-point="{{item.point}}">
+				<view class="flex-treble padding text-cut">{{item.name}}</view>
+				<view class="flex-sub padding text-blue">{{item.credit}}</view>
+				<view class="flex-sub padding {{item.score>=60?'text-green':'text-red'}}">{{item.score}}</view>
+			</view>
+		</view>
+	</block>
+	<view class="msg margin-top-lg" wx:if="{{list.length == 0 && got}}">该学期暂无考试成绩</view>
+	<view class="msg margin-top-lg" wx:if="{{!got}}">请在上方选择学期进行查询</view>
+</view>

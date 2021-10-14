@@ -9,7 +9,6 @@
 		<view class='margin-top-sm'>
 			武工商课表是续（简简课小程序）后的一个重新开发的学生查阅课表以及教务系统数据的检索小程序。项目后端是基于php开发的，因为简简课下线太告急，我开发仓促，更多功能正在继续完善。
 		</view>
-		<view class='margin-top-sm'>本项目将会一直运行下去，小程序服务器由 武汉枫韵云网络科技有限公司 提供。</view>
 		<view class='margin-top-sm'>免责声明：</view>
 		<view class='margin-top-sm'>1.本小程序不会存放任何用户的数据，所有数据都将缓存到本地进行存储。</view>
 		<view class='margin-top-sm'>2.小程序后端因不存储用户数据，每次获取课表可能会长达10几秒，请各位耐心等待。</view>

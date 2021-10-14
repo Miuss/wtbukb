@@ -7,10 +7,10 @@
 	<view class="bg-img bg-mask padding-tb-xl"
 		style="height:{{CustomBar+150}}px;background-image:url(http://tva1.sinaimg.cn/large/002ZE6Hrgy1guerewdsnkj62s02307wh02.jpg);">
 		<view class="margin-top-xl padding-xl text-white">
-			<view class="margin-top-xl padding-xs">
+			<view class="hitokoto margin-top-xl padding-xs">
 				{{HitoData.hitokoto}}
 			</view>
-			<view class="padding-xs margin-top-xs text-right">
+			<view class="hitokoto-from padding-xs margin-top-sm text-right">
 				— {{HitoData.from}}
 			</view>
 		</view>
@@ -21,12 +21,24 @@
 	</view>
 </view>
 <view class="content-box bg-image">
-	<view class="title padding-tb"><text class="cuIcon-title text-orange "></text> 百宝箱</view>
-	<view class="cu-list grid col-4 no-border">
+	<view class="title padding-tb">
+		<text class="cuIcon-title text-purple"></text> 百宝箱
+	</view>
+	<view class="cu-list grid col-4 no-border margin-bottom-xl">
 		<view class="cu-item" bindtap="toExam">
 			<image src="/assets/image/exam.svg"></image>
-			<view class="cu-tag badge">New</view>
 			<text>考试查询</text>
 		</view>
+		<view class="cu-item" bindtap="toScore">
+			<image src="/assets/image/score.svg"></image>
+			<text>成绩查询</text>
+		</view>
+		<view class="cu-item" bindtap="toLibrary">
+			<image src="/assets/image/ydxf.png"></image>
+			<text>图书馆</text>
+		</view>
+	</view>
+	<view class="adContainer">
+		<ad unit-id="adunit-ade1c6c4dbdb0731"></ad>
 	</view>
 </view>

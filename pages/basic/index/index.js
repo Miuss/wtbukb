@@ -7,7 +7,7 @@ Component({
 
 			/* 开启全局样式设置 */
 			options: {
-				addGlobalClass: false,
+				addGlobalClass: true,
 			},
 
 			/* 组件的属性列表 */
@@ -31,6 +31,7 @@ Component({
 				week: 1,
 				semester: 8,
 				tabbarHeight: 0,
+				knowguide: 0,
 				colorArrays: ["#f05261", "#48a8e4", "#ffd061", "#52db9a", "#70d3e6", "#52db9a", "#3f51b5", "#f3d147",
 					"#4adbc3", "#673ab7", "#f3db49", "#76bfcd", "#b495e1", "#ff9800", "#8bc34a"
 				],
@@ -76,6 +77,7 @@ Component({
 						})
 					}
 					this.setData({
+						knowguide: wx.getStorageSync("knowguide")==1?1:0,
 						tabBarHeight: wx.getStorageSync("tabBarHeight"),
 						wlistItemWidth: (app.globalData.windowWidth - 32) / 7
 					})
@@ -105,6 +107,12 @@ Component({
 
 			/* 组件的方法列表 */
 			methods: {
+				knowGuide() {
+					this.setData({
+						knowguide: 1
+					})
+					wx.setStorageSync("knowguide", 1);
+				},
 				getWeekArrays(semester, week) {
 					var starttime = this.data.schoolYear.time[semester];
 					var now = new Date();
