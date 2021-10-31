@@ -115,12 +115,12 @@
 		<view class="padding text-left">
 			<form bindsubmit='bindStuBtnClick'>
 				<view class="cu-form-group">
-					<view class="title">学号</view>
-					<input placeholder="学号" type="text" name="username"></input>
+					<view class="title">账号</view>
+					<input placeholder="请输入学号/教师工号" type="text" name="username"></input>
 				</view>
 				<view class="cu-form-group margin-top-lg">
 					<view class="title">密码</view>
-					<input placeholder="密码" type="password" name="password"></input>
+					<input placeholder="请输入密码" type="password" name="password"></input>
 				</view>
 				<view class='ligin-button'>
 					<button class="bindStuBtn margin-top-lg" formType="submit">立即绑定</button>
