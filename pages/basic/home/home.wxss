@@ -14,6 +14,13 @@
 	opacity: .6;
 }
 
+.app-notice {
+	background-color: #5e77ff;
+	padding: 8px 10px;
+	color: #fff;
+	font-size: 26rpx;
+}
+
 .bbs {
 	padding: .5em 18rpx;
 	background-color: #fafafa;

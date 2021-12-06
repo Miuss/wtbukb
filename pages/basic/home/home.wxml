@@ -2,6 +2,9 @@
 <cu-custom bgColor="bg-white" isHome="{{true}}">
 	<view slot="content">武工商课表</view>
 </cu-custom>
+<view class="app-notice" wx:if="{{uinfo}}" bindtap="toMsg">
+	公告：「寒假小程序重构计划通知」 点我查看详细
+</view>
 <view class="content-box">
 	<view class="loginAdCard margin-bottom" bindtap="swichNav" wx:if="{{!uinfo}}">
 		<view class="flex">

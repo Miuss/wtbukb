@@ -111,6 +111,12 @@ Component({
 				})
 			}
 		},
+		toMsg() {
+			wx.vibrateShort();
+			wx.navigateTo({
+				url: '/pages/message/message',
+			})
+		},
 		getNowDay() {
 			let now = new Date();
 			let day = now.getDay();
